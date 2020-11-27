@@ -38,6 +38,11 @@ class UsersActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(usersBinding.root)
+        setupViews()
+    }
+
+    private fun setupViews() {
+        TODO("Not yet implemented")
     }
 
     fun onAddUser() {
