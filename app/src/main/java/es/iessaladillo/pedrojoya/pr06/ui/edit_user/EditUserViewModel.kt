@@ -10,7 +10,7 @@ class EditUserViewModel {
 
     // Para obtener un URL de foto de forma aleatoria (tendrás que definir
     // e inicializar el random a nivel de clase.
-    private fun getRandomPhotoUrl(): String =
-            "https://picsum.photos/id/${random.nextInt(100)}/400/300"
+//    private fun getRandomPhotoUrl(): String =
+//            "https://picsum.photos/id/${random.nextInt(100)}/400/300"
 
 }

@@ -1,9 +1,11 @@
 package es.iessaladillo.pedrojoya.pr06.ui.users
 
+import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import es.iessaladillo.pedrojoya.pr06.R
+import es.iessaladillo.pedrojoya.pr06.databinding.UsersActivityBinding
 
 class UsersActivity : AppCompatActivity() {
 
@@ -29,6 +31,14 @@ class UsersActivity : AppCompatActivity() {
     }
 
     // FIN NO TOCAR
+
+    private val usersBinding: UsersActivityBinding by lazy{
+        UsersActivityBinding.inflate(layoutInflater)
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(usersBinding.root)
+    }
 
     fun onAddUser() {
         // TODO: Acciones a realizar al querer agregar un usuario.
