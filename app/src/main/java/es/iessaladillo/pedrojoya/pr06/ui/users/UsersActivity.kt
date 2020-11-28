@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
 import es.iessaladillo.pedrojoya.pr06.R
 import es.iessaladillo.pedrojoya.pr06.databinding.UsersActivityBinding
 
@@ -35,6 +37,7 @@ class UsersActivity : AppCompatActivity() {
     private val usersBinding: UsersActivityBinding by lazy{
         UsersActivityBinding.inflate(layoutInflater)
     }
+    private val listAdapter: UsersAdapter = UsersAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(usersBinding.root)
@@ -42,7 +45,16 @@ class UsersActivity : AppCompatActivity() {
     }
 
     private fun setupViews() {
-        TODO("Not yet implemented")
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+        usersBinding.listUsers.run{
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(this@UsersActivity)
+            itemAnimator = DefaultItemAnimator()
+            adapter = listAdapter
+        }
     }
 
     fun onAddUser() {
