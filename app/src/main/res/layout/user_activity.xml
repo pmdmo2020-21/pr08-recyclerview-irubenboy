@@ -2,10 +2,139 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/clRoot"
+    android:padding="@dimen/margin"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <!-- Los iconos tienen una anchura y altura de @dimen/user_button_min_width -->
+    <ImageView
+        android:id="@+id/imgAvatar"
+        android:layout_width="406dp"
+        android:layout_height="140dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_person_add_black_48dp" />
+
+    <TextView
+        android:id="@+id/lblName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_lblName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgAvatar" />
+
+    <EditText
+        android:id="@+id/inputName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/user_txtName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblName" />
+
+    <TextView
+        android:id="@+id/lblEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_lblEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputName" />
+
+    <EditText
+        android:id="@+id/inputEmail"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:hint="@string/user_txtEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblEmail" />
+
+    <TextView
+        android:id="@+id/iconEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/inputEmail"
+        app:layout_constraintStart_toEndOf="@+id/inputEmail"
+        app:layout_constraintTop_toTopOf="@+id/inputEmail"
+        app:drawableEndCompat="@drawable/ic_email_24dp" />
+
+    <TextView
+        android:id="@+id/lblTel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_lblPhonenumber"
+        app:layout_constraintStart_toEndOf="@+id/iconEmail"
+        app:layout_constraintStart_toStartOf="@+id/inputTel"
+        app:layout_constraintTop_toBottomOf="@+id/inputName" />
+
+    <EditText
+        android:id="@+id/inputTel"
+        android:layout_width="161dp"
+        android:layout_height="45dp"
+        android:hint="@string/user_txtPhonenumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iconEmail"
+        app:layout_constraintTop_toBottomOf="@+id/lblTel" />
+
+    <TextView
+        android:id="@+id/iconTel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:drawableEndCompat="@drawable/ic_call_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/inputTel"
+        app:layout_constraintStart_toEndOf="@+id/inputTel"
+        app:layout_constraintTop_toTopOf="@+id/inputTel" />
+
+    <TextView
+        android:id="@+id/lblAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_lblAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
+
+    <EditText
+        android:id="@+id/inputAddress"
+        android:layout_width="352dp"
+        android:layout_height="42dp"
+        android:hint="@string/user_txtAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblAddress" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_map_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/inputAddress"
+        app:layout_constraintStart_toEndOf="@+id/inputAddress"
+        app:layout_constraintTop_toBottomOf="@+id/lblAddress" />
+
+    <TextView
+        android:id="@+id/lblWeb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_lblWeb"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputAddress" />
+
+    <EditText
+        android:id="@+id/inputWeb"
+        android:layout_width="352dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/user_txtWeb"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblWeb" />
+
+    <TextView
+        android:id="@+id/iconWeb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_web_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/inputWeb"
+        app:layout_constraintStart_toEndOf="@+id/inputWeb"
+        app:layout_constraintTop_toBottomOf="@+id/lblWeb" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

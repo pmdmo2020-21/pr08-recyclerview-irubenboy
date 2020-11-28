@@ -2,14 +2,14 @@ package es.iessaladillo.pedrojoya.pr06.ui.add_user
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import es.iessaladillo.pedrojoya.pr06.R
+import es.iessaladillo.pedrojoya.pr06.databinding.UserActivityBinding
 
 class AddUserActivity : AppCompatActivity() {
-
-
 
     // NO TOCAR: Estos métodos gestionan el menú y su gestión
 
@@ -33,6 +33,12 @@ class AddUserActivity : AppCompatActivity() {
 
     // FIN NO TOCAR
 
+    private val userBinding: UserActivityBinding by lazy { UserActivityBinding.inflate(layoutInflater) }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(userBinding.root)
+    }
     private fun onSave() {
         // TODO: Acciones a realizar al querer salvar
     }
