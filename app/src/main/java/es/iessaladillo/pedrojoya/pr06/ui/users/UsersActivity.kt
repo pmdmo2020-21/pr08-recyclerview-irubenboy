@@ -3,10 +3,15 @@ package es.iessaladillo.pedrojoya.pr06.ui.users
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import es.iessaladillo.pedrojoya.pr06.R
+import es.iessaladillo.pedrojoya.pr06.data.Database
+import es.iessaladillo.pedrojoya.pr06.data.model.User
 import es.iessaladillo.pedrojoya.pr06.databinding.UsersActivityBinding
 
 class UsersActivity : AppCompatActivity() {
@@ -38,15 +43,22 @@ class UsersActivity : AppCompatActivity() {
         UsersActivityBinding.inflate(layoutInflater)
     }
     private val listAdapter: UsersAdapter = UsersAdapter()
+    private val viewModel: UsersViewModel by viewModels(){
+        UsersViewModelFactory(Database)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(usersBinding.root)
         setupViews()
+        observe()
     }
+
 
     private fun setupViews() {
         setupRecyclerView()
+        usersBinding.iconAddUsers.setOnClickListener { onAddUser() }
     }
+
 
     private fun setupRecyclerView() {
         usersBinding.listUsers.run{
@@ -57,8 +69,20 @@ class UsersActivity : AppCompatActivity() {
         }
     }
 
-    fun onAddUser() {
-        // TODO: Acciones a realizar al querer agregar un usuario.
+    private fun onAddUser() {
+
     }
 
+    @Suppress("DEPRECATION")
+    private fun observe() {
+        viewModel.users.observe(this){
+            updateList(it)
+        }
+    }
+
+    private fun updateList(users: List<User>){
+        listAdapter.submitList(users)
+        usersBinding.lblEmptyView.visibility = if(users.isEmpty()) View.VISIBLE else View.INVISIBLE
+        usersBinding.iconAddUsers.visibility = if(users.isEmpty()) View.VISIBLE else View.INVISIBLE
+    }
 }

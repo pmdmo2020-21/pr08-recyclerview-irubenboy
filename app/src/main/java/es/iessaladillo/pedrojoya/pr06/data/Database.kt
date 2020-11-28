@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import es.iessaladillo.pedrojoya.pr06.data.model.User
 
-// TODO:
+
 //  Crear una singleton Database que implemente la interfaz DataSource.
 //  Al insertar un usuario, se le asignará un id autonumérico
 //  (primer valor válido será el 1) que deberá ser gestionado por la Database.
