@@ -11,7 +11,7 @@
     <!-- Los iconos tienen una anchura y altura de @dimen/user_button_min_width -->
     <ImageView
         android:id="@+id/imgAvatar"
-        android:layout_width="406dp"
+        android:layout_width="match_parent"
         android:layout_height="140dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
