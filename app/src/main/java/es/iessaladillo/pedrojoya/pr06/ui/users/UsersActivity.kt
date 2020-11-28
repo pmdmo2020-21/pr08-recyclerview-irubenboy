@@ -1,9 +1,12 @@
 package es.iessaladillo.pedrojoya.pr06.ui.users
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
@@ -13,6 +16,7 @@ import es.iessaladillo.pedrojoya.pr06.R
 import es.iessaladillo.pedrojoya.pr06.data.Database
 import es.iessaladillo.pedrojoya.pr06.data.model.User
 import es.iessaladillo.pedrojoya.pr06.databinding.UsersActivityBinding
+import es.iessaladillo.pedrojoya.pr06.ui.add_user.AddUserActivity
 
 class UsersActivity : AppCompatActivity() {
 
@@ -46,6 +50,13 @@ class UsersActivity : AppCompatActivity() {
     private val viewModel: UsersViewModel by viewModels(){
         UsersViewModelFactory(Database)
     }
+
+    private val addUserCall = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        result: ActivityResult ->
+        if(result.resultCode == Activity.RESULT_OK && result.data != null){
+            print("hola")
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(usersBinding.root)
@@ -70,7 +81,8 @@ class UsersActivity : AppCompatActivity() {
     }
 
     private fun onAddUser() {
-
+        val intent = AddUserActivity.newIntent(this)
+        addUserCall.launch(intent)
     }
 
     @Suppress("DEPRECATION")

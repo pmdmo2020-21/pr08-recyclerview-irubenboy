@@ -1,5 +1,7 @@
 package es.iessaladillo.pedrojoya.pr06.ui.add_user
 
+import android.content.Context
+import android.content.Intent
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -7,8 +9,7 @@ import es.iessaladillo.pedrojoya.pr06.R
 
 class AddUserActivity : AppCompatActivity() {
 
-    // TODO: Código de la actividad.
-    //  ...
+
 
     // NO TOCAR: Estos métodos gestionan el menú y su gestión
 
@@ -36,4 +37,7 @@ class AddUserActivity : AppCompatActivity() {
         // TODO: Acciones a realizar al querer salvar
     }
 
+    companion object{
+        fun newIntent(context: Context) = Intent(context, AddUserActivity::class.java)
+    }
 }
