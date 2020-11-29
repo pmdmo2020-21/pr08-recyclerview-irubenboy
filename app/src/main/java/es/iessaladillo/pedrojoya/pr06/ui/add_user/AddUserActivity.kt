@@ -50,7 +50,17 @@ class AddUserActivity : AppCompatActivity() {
     }
 
     private fun setupViews() {
+        showImage()
+        userBinding.imgAvatar.setOnClickListener { changeImage() }
+    }
+
+    private fun showImage() {
         Glide.with(this).load(userViewModel.img).into(userBinding.imgAvatar)
+    }
+
+    private fun changeImage() {
+        userViewModel.changeImage()
+        showImage()
     }
 
     private fun onSave() {

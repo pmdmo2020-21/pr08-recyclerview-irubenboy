@@ -13,7 +13,7 @@ import java.util.*
 class AddUserViewModel(private val database: DataSource) : ViewModel() {
     private val random = Random()
     val users: LiveData<List<User>> = database.getAllUsersOrderedByName()
-    val img: String = getRandomPhotoUrl()
+    var img: String = getRandomPhotoUrl()
 
     // Para obtener un URL de foto de forma aleatoria (tendrás que definir
     // e inicializar el random a nivel de clase.
@@ -22,6 +22,10 @@ class AddUserViewModel(private val database: DataSource) : ViewModel() {
 
     fun addUser(user: User) {
         database.insertUser(user)
+    }
+
+    fun changeImage(){
+        img = getRandomPhotoUrl()
     }
 
 }
