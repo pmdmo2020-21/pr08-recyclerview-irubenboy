@@ -40,6 +40,7 @@ class UsersAdapter: ListAdapter<User, UsersAdapter.ViewHolder>(UsersDiffCallBack
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(currentList[position])
+        val user = currentList[position]
+        holder.bind(user)
     }
 }

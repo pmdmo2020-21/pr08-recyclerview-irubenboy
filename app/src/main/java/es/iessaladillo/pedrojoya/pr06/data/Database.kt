@@ -14,7 +14,14 @@ import es.iessaladillo.pedrojoya.pr06.data.model.User
 //  Al consultar los usuario se deberá retornar un LiveData con la lista
 //  de usuarios ordenada por nombre
 object Database: DataSource{
-    private val users: MutableList<User> = mutableListOf()
+    private val users: MutableList<User> = mutableListOf(
+            User(1, "Ruben Moreno Narbona", "rubenmoreno@saladillo.es", "123123123", "C/ Ciudd de" +
+                    " Tarifa", "www.rubenmoreno.es", "https://picsum.photos/id/97/400/300"),
+            User(2, "Selena Gomez", "selenagomez@dinsey.com", "456456456", "Nop", "www" +
+                    ".selenagomez.es", "https://picsum.photos/id/97/400/300"),
+            User(2, "Demi Lovato", "ddlovato@disney.com", "789789789", null, null,"https://picsum" +
+                    ".photos/id/97/400/300"),
+    )
 
     private val usersLiveData: MutableLiveData<List<User>> = MutableLiveData(users.sortedBy { it.name })
 

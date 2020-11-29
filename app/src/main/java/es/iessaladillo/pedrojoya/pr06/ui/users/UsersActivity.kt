@@ -70,7 +70,7 @@ class UsersActivity : AppCompatActivity() {
         usersBinding.listUsers.run{
             setHasFixedSize(true)
             layoutManager = GridLayoutManager(this@UsersActivity, this@UsersActivity.resources
-                    .getInteger(R.integer.users_grid_columns), RecyclerView.HORIZONTAL, false)
+                    .getInteger(R.integer.users_grid_columns), RecyclerView.VERTICAL, false)
             itemAnimator = DefaultItemAnimator()
             adapter = listAdapter
         }
