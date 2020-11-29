@@ -42,7 +42,6 @@ class AddUserActivity : AppCompatActivity() {
 
     private val userBinding: UserActivityBinding by lazy { UserActivityBinding.inflate(layoutInflater) }
     private val userViewModel: AddUserViewModel by viewModels { AddUserViewModelFactory(Database) }
-    private val random = Random()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +52,8 @@ class AddUserActivity : AppCompatActivity() {
     private fun setupViews() {
         showImage()
         userBinding.imgAvatar.setOnClickListener { changeImage() }
+        userBinding.inputWeb.setOnEditorActionListener { _, _, _ -> onSave()
+            false }
     }
 
     private fun showImage() {

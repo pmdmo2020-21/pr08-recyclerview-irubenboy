@@ -95,6 +95,8 @@ class EditUserActivity : AppCompatActivity() {
 
     private fun setupViews() {
         editUserBinding.imgAvatar.setOnClickListener { changeImage() }
+        editUserBinding.inputWeb.setOnEditorActionListener { _, _, _ -> onSave()
+            false }
     }
 
     private fun changeImage() {
@@ -126,7 +128,7 @@ class EditUserActivity : AppCompatActivity() {
         user.run{
             editUserBinding.inputName.setText(name)
             editUserBinding.inputEmail.setText(email)
-            editUserBinding.inputTel.setText(phoneNumber)
+            editUserBinding.inputTel.setText(phoneNumber.toInt())
             editUserBinding.inputWeb.setText(web?:"")
             editUserBinding.inputAddress.setText(address?:"")
             Glide.with(editUserBinding.root).load(photoUrl).into(editUserBinding.imgAvatar)
