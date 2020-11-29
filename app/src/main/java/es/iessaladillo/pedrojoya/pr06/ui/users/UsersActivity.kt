@@ -18,6 +18,7 @@ import es.iessaladillo.pedrojoya.pr06.data.Database
 import es.iessaladillo.pedrojoya.pr06.data.model.User
 import es.iessaladillo.pedrojoya.pr06.databinding.UsersActivityBinding
 import es.iessaladillo.pedrojoya.pr06.ui.add_user.AddUserActivity
+import es.iessaladillo.pedrojoya.pr06.ui.edit_user.EditUserActivity
 
 class UsersActivity : AppCompatActivity() {
 
@@ -47,7 +48,11 @@ class UsersActivity : AppCompatActivity() {
     private val usersBinding: UsersActivityBinding by lazy{
         UsersActivityBinding.inflate(layoutInflater)
     }
-    private val listAdapter: UsersAdapter = UsersAdapter()
+    private val listAdapter: UsersAdapter = UsersAdapter().apply {
+        onEditListener = { position -> editUser(position)}
+    }
+
+
     private val viewModel: UsersViewModel by viewModels {
         UsersViewModelFactory(Database)
     }
@@ -97,4 +102,11 @@ class UsersActivity : AppCompatActivity() {
     companion object{
         fun newIntent(context: Context) = Intent(context, UsersActivity::class.java)
     }
+
+    private fun editUser(position: Int) {
+        val user = listAdapter.currentList[position]
+        val intent = EditUserActivity.newIntent(this, user)
+        startActivity(intent)
+    }
 }
+

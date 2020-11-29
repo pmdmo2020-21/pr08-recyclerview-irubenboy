@@ -11,6 +11,9 @@ import es.iessaladillo.pedrojoya.pr06.databinding.UsersActivityItemBinding
 
 class UsersAdapter: ListAdapter<User, UsersAdapter.ViewHolder>(UsersDiffCallBack) {
 
+    var onEditListener: ((Int) -> Unit)? = null
+    var onDeleteListener: ((Int) -> Unit)? = null
+
     object UsersDiffCallBack: DiffUtil.ItemCallback<User>() {
         override fun areItemsTheSame(oldItem: User, newItem: User): Boolean = oldItem.id == newItem.id
 
@@ -23,6 +26,18 @@ class UsersAdapter: ListAdapter<User, UsersAdapter.ViewHolder>(UsersDiffCallBack
 
     inner class ViewHolder(private val binding: UsersActivityItemBinding): RecyclerView.ViewHolder
     (binding.root) {
+
+        init {
+            binding.btnEdit.setOnClickListener {
+                @Suppress("DEPRECATION")
+                onEditListener?.invoke(adapterPosition)
+            }
+
+            binding.btnDelete.setOnClickListener {
+                @Suppress("DEPRECATION")
+                onDeleteListener?.invoke(adapterPosition)
+            }
+        }
         fun bind(user: User){
             user.run {
                 binding.lblName.text = name
