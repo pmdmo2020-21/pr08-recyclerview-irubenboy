@@ -22,7 +22,6 @@ import es.iessaladillo.pedrojoya.pr06.ui.edit_user.EditUserActivity
 
 class UsersActivity : AppCompatActivity() {
 
-    // TODO: Código de la actividad.
     //  Ten en cuenta que el recyclerview se muestra en forma de grid,
     //  donde el número de columnas está gestionado
     //  por R.integer.users_grid_columns

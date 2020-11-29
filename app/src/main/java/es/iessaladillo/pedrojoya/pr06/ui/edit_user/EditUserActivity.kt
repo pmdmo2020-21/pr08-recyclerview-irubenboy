@@ -8,13 +8,15 @@ import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.observe
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import es.iessaladillo.pedrojoya.pr06.R
 import es.iessaladillo.pedrojoya.pr06.data.Database
 import es.iessaladillo.pedrojoya.pr06.data.model.User
 import es.iessaladillo.pedrojoya.pr06.databinding.UserActivityBinding
-import java.util.*
+import es.iessaladillo.pedrojoya.pr06.ui.users.UsersActivity
 
 class EditUserActivity : AppCompatActivity() {
 
@@ -47,11 +49,41 @@ class EditUserActivity : AppCompatActivity() {
 
     private val editUserBinding: UserActivityBinding by lazy{ UserActivityBinding.inflate(layoutInflater)}
     private val editUserViewModel: EditUserViewModel by viewModels { EditUserViewModelFactory(Database)  }
-    private val random = Random()
 
     private fun onSave() {
+        if(isInvalidData()){
+            Snackbar.make(editUserBinding.root, getString(R.string.user_invalid_data), Snackbar
+                    .LENGTH_LONG).show()
+        } else {
+            updateUser(editUserViewModel.userEditable)
+            onUserActivity()
+        }
 
     }
+
+    private fun onUserActivity() {
+        val intent = UsersActivity.newIntent(this)
+        startActivity(intent)
+    }
+
+    private fun updateUser(userEditable: LiveData<User>) {
+        val address = if (editUserBinding.inputAddress.text.isEmpty()) null else
+            editUserBinding.inputAddress.text.toString()
+        val web = if(editUserBinding.inputWeb.text.isEmpty()) null else editUserBinding.inputWeb
+                .text.toString()
+        val user = userEditable.value?.copy(
+                name = editUserBinding.inputName.text.toString(),
+                email = editUserBinding.inputEmail.text.toString(),
+                phoneNumber = editUserBinding.inputAddress.text.toString(),
+                address = address,
+                web = web,
+                photoUrl = userEditable.value?.photoUrl.toString())
+
+        if(user != null) editUserViewModel.updateUser(user)
+    }
+
+    private fun isInvalidData(): Boolean =  editUserBinding.inputName.text.isEmpty() || editUserBinding
+            .inputEmail.text.isEmpty() || editUserBinding.inputTel.text.isEmpty()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

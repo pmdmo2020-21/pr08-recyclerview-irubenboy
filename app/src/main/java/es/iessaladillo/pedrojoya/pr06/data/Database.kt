@@ -37,7 +37,11 @@ object Database: DataSource{
     }
 
     override fun updateUser(user: User) {
-        TODO("Not yet implemented")
+        val position = users.indexOfFirst { it.id == user.id }
+        if(position >= 0){
+            users[position] = user
+            updateUsersLiveData()
+        }
     }
 
     override fun deleteUser(user: User) {

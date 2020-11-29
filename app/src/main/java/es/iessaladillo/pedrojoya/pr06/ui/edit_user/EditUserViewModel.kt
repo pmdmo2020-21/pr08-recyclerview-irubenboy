@@ -33,4 +33,8 @@ class EditUserViewModel(private val database: DataSource): ViewModel() {
     fun getEditableUser(user: User) {
         _userEditable.value = user
     }
+
+    fun updateUser(user: User) {
+        database.updateUser(user)
+    }
 }
