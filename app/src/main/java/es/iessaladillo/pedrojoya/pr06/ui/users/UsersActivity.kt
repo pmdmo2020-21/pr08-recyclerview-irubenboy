@@ -1,19 +1,18 @@
 package es.iessaladillo.pedrojoya.pr06.ui.users
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import es.iessaladillo.pedrojoya.pr06.R
 import es.iessaladillo.pedrojoya.pr06.data.Database
 import es.iessaladillo.pedrojoya.pr06.data.model.User
@@ -70,7 +69,8 @@ class UsersActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         usersBinding.listUsers.run{
             setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(this@UsersActivity)
+            layoutManager = GridLayoutManager(this@UsersActivity, this@UsersActivity.resources
+                    .getInteger(R.integer.users_grid_columns), RecyclerView.HORIZONTAL, false)
             itemAnimator = DefaultItemAnimator()
             adapter = listAdapter
         }

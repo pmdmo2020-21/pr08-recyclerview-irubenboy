@@ -22,6 +22,11 @@ object Database: DataSource{
 
     override fun insertUser(user: User) {
         users.add(user)
+        updateUsersLiveData()
+    }
+
+    private fun updateUsersLiveData() {
+        usersLiveData.value = ArrayList<User>(users)
     }
 
     override fun updateUser(user: User) {
