@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import es.iessaladillo.pedrojoya.pr06.R
 import es.iessaladillo.pedrojoya.pr06.databinding.UserActivityBinding
 
@@ -49,8 +50,18 @@ class AddUserActivity : AppCompatActivity() {
     }
 
     private fun onSave() {
-        // TODO: Acciones a realizar al querer salvar
+        if(isInvalidData()){
+            Snackbar.make(userBinding.root, getString(R.string.user_invalid_data), Snackbar.LENGTH_LONG).show()
+        } else {
+            navigateToUsers()
+        }
     }
+
+    private fun navigateToUsers() {
+
+    }
+
+    private fun isInvalidData(): Boolean =  userBinding.inputName.text.isEmpty() || userBinding.inputEmail.text.isEmpty() || userBinding.inputTel.text.isEmpty()
 
     companion object{
         fun newIntent(context: Context) = Intent(context, AddUserActivity::class.java)
