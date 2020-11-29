@@ -74,6 +74,8 @@ class AddUserActivity : AppCompatActivity() {
     }
 
     private fun addUser() {
+        val id: Long = if(userViewModel.users.value?.isEmpty()!!) 1 else userViewModel.users.value!!
+                .size+1.toLong()
         val name = userBinding.inputName.text.toString()
         val email = userBinding
                 .inputEmail.text.toString()
@@ -81,7 +83,7 @@ class AddUserActivity : AppCompatActivity() {
         val address = if (userBinding.inputAddress.text.isEmpty()) null else userBinding
                 .inputAddress.text.toString()
         val web = if (userBinding.inputWeb.text.isEmpty()) null else userBinding.inputWeb.text.toString()
-        val user = User(random.nextLong()+10, name, email, phoneNumber, address, web,
+        val user = User(id, name, email, phoneNumber, address, web,
                 userViewModel.img)
         userViewModel.addUser(user)
     }
