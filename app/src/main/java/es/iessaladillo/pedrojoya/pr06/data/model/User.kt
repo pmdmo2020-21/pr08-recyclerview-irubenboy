@@ -9,4 +9,4 @@ import kotlinx.android.parcel.Parcelize
 //  todas ellas de tipo String.
 @Parcelize
 data class User(val id: Long, val name: String, val email: String, val phoneNumber: String, val
-address: String?, val web: String?, val photoUrl: String): Parcelable
+address: String?, val web: String?, var photoUrl: String): Parcelable

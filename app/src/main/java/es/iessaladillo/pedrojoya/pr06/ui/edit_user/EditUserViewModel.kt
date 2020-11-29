@@ -19,7 +19,7 @@ class EditUserViewModel(private val database: DataSource): ViewModel() {
         get() = _userEditable
 
     val users: LiveData<List<User>> = database.getAllUsersOrderedByName()
-    var img: String = getRandomPhotoUrl()
+    //var img: String = _userEditable.value?.photoUrl.toString()
 
     // Para obtener un URL de foto de forma aleatoria (tendrás que definir
     // e inicializar el random a nivel de clase.
@@ -27,7 +27,7 @@ class EditUserViewModel(private val database: DataSource): ViewModel() {
             "https://picsum.photos/id/${random.nextInt(100)}/400/300"
 
     fun changeImage(){
-        img = getRandomPhotoUrl()
+        _userEditable.value?.photoUrl = getRandomPhotoUrl()
     }
 
     fun getEditableUser(user: User) {

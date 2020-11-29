@@ -50,14 +50,29 @@ class EditUserActivity : AppCompatActivity() {
     private val random = Random()
 
     private fun onSave() {
-        // TODO: Acciones a realizar al querer salvar
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(editUserBinding.root)
+        setupViews()
         getData()
         observe()
+    }
+
+    private fun setupViews() {
+        editUserBinding.imgAvatar.setOnClickListener { changeImage() }
+    }
+
+    private fun changeImage() {
+        editUserViewModel.changeImage()
+        showImage()
+    }
+
+    private fun showImage() {
+        Glide.with(this).load(editUserViewModel.userEditable.value?.photoUrl).into(editUserBinding
+                .imgAvatar)
     }
 
     @Suppress("DEPRECATION")
