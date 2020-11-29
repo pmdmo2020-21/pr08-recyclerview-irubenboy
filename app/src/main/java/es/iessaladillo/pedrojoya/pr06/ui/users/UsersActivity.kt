@@ -1,6 +1,8 @@
 package es.iessaladillo.pedrojoya.pr06.ui.users
 
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -90,5 +92,9 @@ class UsersActivity : AppCompatActivity() {
         listAdapter.submitList(users)
         usersBinding.lblEmptyView.visibility = if(users.isEmpty()) View.VISIBLE else View.INVISIBLE
         usersBinding.iconAddUsers.visibility = if(users.isEmpty()) View.VISIBLE else View.INVISIBLE
+    }
+
+    companion object{
+        fun newIntent(context: Context) = Intent(context, UsersActivity::class.java)
     }
 }

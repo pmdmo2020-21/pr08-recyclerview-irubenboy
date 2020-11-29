@@ -13,6 +13,7 @@ import es.iessaladillo.pedrojoya.pr06.R
 import es.iessaladillo.pedrojoya.pr06.data.Database
 import es.iessaladillo.pedrojoya.pr06.data.model.User
 import es.iessaladillo.pedrojoya.pr06.databinding.UserActivityBinding
+import es.iessaladillo.pedrojoya.pr06.ui.users.UsersActivity
 import java.util.*
 
 class AddUserActivity : AppCompatActivity() {
@@ -68,7 +69,7 @@ class AddUserActivity : AppCompatActivity() {
             Snackbar.make(userBinding.root, getString(R.string.user_invalid_data), Snackbar.LENGTH_LONG).show()
         } else {
             addUser()
-            navigateToUsers()
+            onUsersActivity()
         }
     }
 
@@ -85,8 +86,9 @@ class AddUserActivity : AppCompatActivity() {
         userViewModel.addUser(user)
     }
 
-    private fun navigateToUsers() {
-
+    private fun onUsersActivity() {
+        val intent = UsersActivity.newIntent(this)
+        startActivity(intent)
     }
 
     private fun isInvalidData(): Boolean =  userBinding.inputName.text.isEmpty() || userBinding
