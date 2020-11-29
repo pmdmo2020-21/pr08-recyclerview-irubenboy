@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import es.iessaladillo.pedrojoya.pr06.R
 import es.iessaladillo.pedrojoya.pr06.data.Database
@@ -49,8 +48,13 @@ class UsersActivity : AppCompatActivity() {
     }
     private val listAdapter: UsersAdapter = UsersAdapter().apply {
         onEditListener = { position -> editUser(position)}
+        onDeleteListener = { position -> deleteUser(position)}
     }
 
+    private fun deleteUser(position: Int){
+        val user = listAdapter.currentList[position]
+        viewModel.delete(user)
+    }
 
     private val viewModel: UsersViewModel by viewModels {
         UsersViewModelFactory(Database)

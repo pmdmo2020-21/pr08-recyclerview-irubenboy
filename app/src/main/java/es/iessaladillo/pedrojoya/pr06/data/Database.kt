@@ -45,7 +45,11 @@ object Database: DataSource{
     }
 
     override fun deleteUser(user: User) {
-        TODO("Not yet implemented")
+        val position = users.indexOfFirst { it.id == user.id }
+        if(position >= 0){
+            users.removeAt(position)
+            updateUsersLiveData()
+        }
     }
 
 }

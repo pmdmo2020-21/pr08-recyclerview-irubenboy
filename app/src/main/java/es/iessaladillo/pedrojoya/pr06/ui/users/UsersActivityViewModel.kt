@@ -8,5 +8,9 @@ import es.iessaladillo.pedrojoya.pr06.data.model.User
 
 //  Crear clase UsersActivityViewModel
 class UsersViewModel(private val database: DataSource): ViewModel(){
+    fun delete(user: User) {
+        database.deleteUser(user)
+    }
+
     val users: LiveData<List<User>> = database.getAllUsersOrderedByName()
 }
