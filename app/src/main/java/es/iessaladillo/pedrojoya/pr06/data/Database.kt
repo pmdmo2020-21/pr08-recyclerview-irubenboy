@@ -16,11 +16,11 @@ import es.iessaladillo.pedrojoya.pr06.data.model.User
 object Database: DataSource{
     private val users: MutableList<User> = mutableListOf(
             User(1, "Ruben Moreno Narbona", "rubenmoreno@saladillo.es", "123123123", "C/ Ciudd de" +
-                    " Tarifa", "www.rubenmoreno.es", "https://picsum.photos/id/97/400/300"),
+                    " Tarifa", "www.rubenmoreno.es", "https://picsum.photos/id/57/400/300"),
             User(2, "Selena Gomez", "selenagomez@dinsey.com", "456456456", "Nop", "www" +
-                    ".selenagomez.es", "https://picsum.photos/id/97/400/300"),
+                    ".selenagomez.es", "https://picsum.photos/id/67/400/300"),
             User(2, "Demi Lovato", "ddlovato@disney.com", "789789789", null, null,"https://picsum" +
-                    ".photos/id/97/400/300"),
+                    ".photos/id/77/400/300"),
     )
 
     private val usersLiveData: MutableLiveData<List<User>> = MutableLiveData(users.sortedBy { it.name })
@@ -33,7 +33,7 @@ object Database: DataSource{
     }
 
     private fun updateUsersLiveData() {
-        usersLiveData.value = ArrayList<User>(users)
+        usersLiveData.value = ArrayList<User>(users.sortedBy { it.name })
     }
 
     override fun updateUser(user: User) {
