@@ -21,7 +21,7 @@ object Database: DataSource{
     override fun getAllUsersOrderedByName(): LiveData<List<User>> = usersLiveData
 
     override fun insertUser(user: User) {
-        TODO("Not yet implemented")
+        users.add(user)
     }
 
     override fun updateUser(user: User) {

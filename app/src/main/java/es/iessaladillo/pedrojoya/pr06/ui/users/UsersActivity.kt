@@ -47,16 +47,10 @@ class UsersActivity : AppCompatActivity() {
         UsersActivityBinding.inflate(layoutInflater)
     }
     private val listAdapter: UsersAdapter = UsersAdapter()
-    private val viewModel: UsersViewModel by viewModels(){
+    private val viewModel: UsersViewModel by viewModels {
         UsersViewModelFactory(Database)
     }
 
-    private val addUserCall = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-        result: ActivityResult ->
-        if(result.resultCode == Activity.RESULT_OK && result.data != null){
-            print("hola")
-        }
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(usersBinding.root)
@@ -82,7 +76,7 @@ class UsersActivity : AppCompatActivity() {
 
     private fun onAddUser() {
         val intent = AddUserActivity.newIntent(this)
-        addUserCall.launch(intent)
+        startActivity(intent)
     }
 
     @Suppress("DEPRECATION")
