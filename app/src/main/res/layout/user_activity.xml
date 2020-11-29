@@ -4,25 +4,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/clRoot"
-    android:padding="@dimen/margin"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <!-- Los iconos tienen una anchura y altura de @dimen/user_button_min_width -->
     <ImageView
         android:id="@+id/imgAvatar"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_width="0dp"
+        android:layout_height="240dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_person_add_black_48dp" />
+        tools:src="@drawable/ic_person_add_black_48dp"
+        android:contentDescription="@string/imgAvatar" />
 
     <TextView
         android:id="@+id/lblName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/user_lblName"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin_2x"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgAvatar" />
 
@@ -31,16 +34,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
         android:inputType="textPersonName"
         android:hint="@string/user_txtName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblName" />
+        app:layout_constraintTop_toBottomOf="@+id/lblName"
+        android:autofillHints="@string/user_txtName" />
 
     <TextView
         android:id="@+id/lblEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/user_lblEmail"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin_2x"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputName" />
 
@@ -48,24 +56,31 @@
         android:id="@+id/inputEmail"
         android:layout_width="150dp"
         android:layout_height="48dp"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin_2x"
         android:hint="@string/user_txtEmail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/lblEmail"
+        android:autofillHints=""
+        android:inputType="textEmailAddress" />
 
-    <TextView
+    <ImageView
         android:id="@+id/iconEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/user_button_min_width"
+        android:layout_height="@dimen/user_button_min_width"
+        android:layout_marginTop="@dimen/margin_2x"
+        android:src="@drawable/ic_email_24dp"
         app:layout_constraintBottom_toBottomOf="@+id/inputEmail"
         app:layout_constraintStart_toEndOf="@+id/inputEmail"
         app:layout_constraintTop_toTopOf="@+id/inputEmail"
-        app:drawableEndCompat="@drawable/ic_email_24dp" />
+        android:contentDescription="@string/user_imgEmail" />
 
     <TextView
         android:id="@+id/lblTel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/user_lblPhonenumber"
+        android:layout_marginTop="@dimen/margin_2x"
         app:layout_constraintStart_toEndOf="@+id/iconEmail"
         app:layout_constraintStart_toStartOf="@+id/inputTel"
         app:layout_constraintTop_toBottomOf="@+id/inputName" />
@@ -75,24 +90,32 @@
         android:layout_width="161dp"
         android:layout_height="45dp"
         android:hint="@string/user_txtPhonenumber"
+        app:layout_constraintBottom_toTopOf="@+id/lblAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iconEmail"
-        app:layout_constraintTop_toBottomOf="@+id/lblTel" />
+        app:layout_constraintTop_toBottomOf="@+id/lblTel"
+        android:autofillHints="@string/user_txtPhonenumber"
+        android:inputType="number" />
 
-    <TextView
+    <ImageView
         android:id="@+id/iconTel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:drawableEndCompat="@drawable/ic_call_24dp"
+        android:layout_width="@dimen/user_button_min_width"
+        android:layout_height="@dimen/user_button_min_width"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginTop="@dimen/margin_2x"
+        android:src="@drawable/ic_call_24dp"
         app:layout_constraintBottom_toBottomOf="@+id/inputTel"
         app:layout_constraintStart_toEndOf="@+id/inputTel"
-        app:layout_constraintTop_toTopOf="@+id/inputTel" />
+        app:layout_constraintTop_toTopOf="@+id/inputTel"
+        android:contentDescription="@string/user_imgPhonenumber" />
 
     <TextView
         android:id="@+id/lblAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/user_lblAddress"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin_2x"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
 
@@ -101,22 +124,30 @@
         android:layout_width="352dp"
         android:layout_height="42dp"
         android:hint="@string/user_txtAddress"
+        android:layout_marginTop="@dimen/margin_2x"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/lblAddress"
+        android:autofillHints="@string/user_txtAddress"
+        android:inputType="textPostalAddress" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableEnd="@drawable/ic_map_24dp"
+    <ImageView
+        android:layout_width="@dimen/user_button_min_width"
+        android:layout_height="@dimen/user_button_min_width"
+        android:src="@drawable/ic_map_24dp"
         app:layout_constraintBottom_toBottomOf="@+id/inputAddress"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
         app:layout_constraintStart_toEndOf="@+id/inputAddress"
-        app:layout_constraintTop_toBottomOf="@+id/lblAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/lblAddress"
+        android:contentDescription="@string/user_imgAddress" />
 
     <TextView
         android:id="@+id/lblWeb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/user_lblWeb"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin_2x"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputAddress" />
 
@@ -125,16 +156,22 @@
         android:layout_width="352dp"
         android:layout_height="wrap_content"
         android:hint="@string/user_txtWeb"
+        android:layout_marginStart="@dimen/margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblWeb" />
+        app:layout_constraintTop_toBottomOf="@+id/lblWeb"
+        android:autofillHints="@string/user_txtWeb"
+        android:inputType="textWebEmailAddress" />
 
-    <TextView
+    <ImageView
         android:id="@+id/iconWeb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableEnd="@drawable/ic_web_24dp"
+        android:layout_width="@dimen/user_button_min_width"
+        android:layout_height="@dimen/user_button_min_width"
+        android:src="@drawable/ic_web_24dp"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin_2x"
         app:layout_constraintBottom_toBottomOf="@+id/inputWeb"
         app:layout_constraintStart_toEndOf="@+id/inputWeb"
-        app:layout_constraintTop_toBottomOf="@+id/lblWeb" />
+        app:layout_constraintTop_toBottomOf="@+id/lblWeb"
+        android:contentDescription="@string/user_imgWeb" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
